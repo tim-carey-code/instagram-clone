@@ -1,0 +1,15 @@
+.gram__media > img {
+  display: flex;
+  position: relative;
+  object-fit: cover;
+  max-width: 626px;
+  height: 767.5px;
+  overflow: hidden;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+}
+
+body {
+  margin-top: 30px;
+}
