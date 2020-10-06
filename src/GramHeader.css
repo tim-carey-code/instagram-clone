@@ -8,7 +8,7 @@
   padding: 5px;
   background-color: white;
   border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
-  max-width: 614px;
+  width: 614px;
   max-height: 60px;
 }
 
@@ -37,4 +37,11 @@
 .dialog__warning {
   color: red;
   font-weight: bold;
+}
+
+@media screen and (max-width: 300px) and (max-height: 825px) {
+  .gram__header {
+    width: stretch;
+    height: stretch;
+  }
 }
