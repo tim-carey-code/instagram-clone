@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./GramFooter.css";
 import TextField from "@material-ui/core/TextField";
 import PostAddIcon from "@material-ui/icons/PostAdd";
@@ -22,19 +22,36 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
   },
+
+  favoriteIcon: {
+    color: "red",
+  },
 }));
 
 function GramFooter() {
+  const [count, setCount] = useState(0);
+  const [likeIconColor, setLikeIconColor] = useState({});
+
+  function handleLikeClick() {
+    setCount(count + 1);
+  }
+
+  const handleLikeIconColor = () => {
+    setLikeIconColor("");
+  };
+
   const classes = useStyles();
   return (
     <div className="gram__footer">
       <div className="gram__footerIcons">
-        <FavoriteBorderIcon className={classes.iconPadding} />
+        <button onClick={handleLikeClick}>
+          <FavoriteBorderIcon className={classes.favoriteIcon} />
+        </button>
         <ChatBubbleOutlineIcon className={classes.iconPadding} />
       </div>
 
       <div className="gram__footerLikes">
-        <small>100 likes</small>
+        <small>{count} likes</small>
       </div>
       <div className="gram__footerUserPost">
         <p>Username of post</p>
