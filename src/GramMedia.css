@@ -1,5 +1,7 @@
 .gram__media > img {
   display: flex;
+  flex-direction: row;
+  padding-top: 1px;
   position: relative;
   object-fit: cover;
   max-width: 626px;

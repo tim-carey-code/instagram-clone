@@ -1,5 +1,8 @@
+import { makeStyles } from "@material-ui/core";
 import React from "react";
 import "./GramMedia.css";
+
+const useStyles = makeStyles((theme) => ({}));
 
 function GramMedia() {
   return (

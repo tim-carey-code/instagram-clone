@@ -13,6 +13,7 @@ import {
   Dialog,
   ListItem,
   Divider,
+  ListItemText,
 } from "@material-ui/core";
 
 const ITEM_HEIGHT = 48;
@@ -21,8 +22,7 @@ const useStyles = makeStyles((theme) => ({
   dialogMenu: {
     backgroundColor: "rgba(var(--b3f, 250, 250, 250), 1)",
     width: "400px",
-    alignItems: "center",
-    justifyContent: "center",
+    textAlign: "center",
   },
 }));
 
@@ -36,7 +36,7 @@ class myClass extends ScrollListenerMixin {
   }
 }
 
-function Gram(props) {
+function GramHeader(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const classes = useStyles();
@@ -53,7 +53,6 @@ function Gram(props) {
   return (
     <div>
       <main className="gram__header">
-        <div className="gram__avatarBorder"></div>
         <div className="gram__avatar">
           <Avatar
             // className={classes.small}
@@ -64,38 +63,38 @@ function Gram(props) {
         <p className="gram__username">Username</p>
         <div className="gram__dialog">
           <MoreHorizIcon onClick={handleClick} />
+
+          <Dialog onClose={handleClose} open={open}>
+            <List className={classes.dialogMenu}>
+              <ListItem className={classes.dialogMenu} button divider>
+                <ListItemText primary="Report" />
+              </ListItem>
+              <ListItem className={classes.dialogMenu} button divider>
+                <ListItemText primary="Unfollow" />
+              </ListItem>
+
+              <ListItem className={classes.dialogMenu} button divider>
+                <ListItemText primary="Go to Post" />
+              </ListItem>
+
+              <ListItem className={classes.dialogMenu} button divider>
+                <ListItemText primary="Share" />
+              </ListItem>
+
+              <ListItem className={classes.dialogMenu} button divider>
+                <ListItemText primary="Copy Link" />
+              </ListItem>
+
+              <ListItem
+                className={classes.dialogMenu}
+                onClick={handleClose}
+                button
+              >
+                <ListItemText primary="Cancel" />
+              </ListItem>
+            </List>
+          </Dialog>
         </div>
-        <Dialog onClose={handleClose} open={open}>
-          <List className={classes.dialogMenu}>
-            <ListItem className={classes.dialogMenu} button>
-              <p className="dialog__warning">Report</p>
-            </ListItem>
-            <Divider />
-            <ListItem className={classes.dialogMenu} button>
-              <p className="dialog__warning">Unfollow</p>
-            </ListItem>
-            <Divider />
-            <ListItem className={classes.dialogMenu} button>
-              Go to post
-            </ListItem>
-            <Divider />
-            <ListItem className={classes.dialogMenu} button>
-              Share
-            </ListItem>
-            <Divider />
-            <ListItem className={classes.dialogMenu} button>
-              Copy Link
-            </ListItem>
-            <Divider />
-            <ListItem
-              className={classes.dialogMenu}
-              onClick={handleClose}
-              button
-            >
-              Cancel
-            </ListItem>
-          </List>
-        </Dialog>
 
         {/* <Menu
           id="long-menu"
@@ -126,4 +125,4 @@ function Gram(props) {
   );
 }
 
-export default Gram;
+export default GramHeader;
