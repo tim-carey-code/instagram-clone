@@ -7,12 +7,8 @@ import {
   Avatar,
   List,
   makeStyles,
-  Menu,
-  MenuItem,
-  DialogTitle,
   Dialog,
   ListItem,
-  Divider,
   ListItemText,
 } from "@material-ui/core";
 
@@ -101,31 +97,6 @@ function GramHeader(props) {
             </List>
           </Dialog>
         </div>
-
-        {/* <Menu
-          id="long-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={open}
-          onClose={handleClose}
-          PaperProps={{
-            style: {
-              maxHeight: ITEM_HEIGHT * 4.5,
-              width: "20ch",
-            },
-          }}
-        >
-          <MenuItem onClick={(Link, handleClose)} to="/report">
-            Report User
-          </MenuItem>
-          <MenuItem onClick={(Link, handleClose)} to="">
-            Unfollow User
-          </MenuItem>
-          <MenuItem onClick={(Link, handleClose)} to="">
-            Go To Post
-          </MenuItem>
-          <MenuItem onClick={handleClose}>Cancel</MenuItem>
-        </Menu> */}
       </main>
     </div>
   );

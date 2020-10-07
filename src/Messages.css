@@ -1,0 +1,8 @@
+.messages {
+  overflow-y: auto;
+}
+.messages > strong {
+  display: flex;
+  margin-top: 100px;
+  justify-content: center;
+}

@@ -26,6 +26,7 @@
 }
 
 .gram__footerTime {
+  margin-bottom: 5px;
   padding-left: 10px;
 }
 
@@ -51,19 +52,34 @@
 
 .gram__footerForm {
   display: flex;
+  align-items: center;
+  -webkit-box-align: center;
+  -webkit-box-orient: horizontal;
+  position: relative;
+  flex-grow: 1;
+  flex-shrink: 1;
   border-top: 1px solid rgba(var(--b6a, 219, 219, 219), 0.5);
 }
 
-.gram__footerForm > form > button {
+.gram__footerFormPost > button {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-box-orient: vertical;
+  display: inline-flex;
+  vertical-align: top;
+  cursor: pointer;
+  appearance: none;
   outline: none;
   border: none;
-  margin-left: 400px;
-  margin-bottom: 200px;
+  width: auto;
+  margin-left: 550px;
+  /* margin-bottom: 200px; */
   background-color: white;
   color: lightskyblue;
 }
 
 .gram__footerForm > form > textarea {
+  position: relative;
   padding-top: 10px;
   width: 600px;
   resize: none;

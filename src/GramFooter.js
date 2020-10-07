@@ -69,8 +69,10 @@ function GramFooter() {
 
       <div className="gram__footerForm">
         <form action="">
-          <textarea placeholder="Add a comment..."></textarea>
-          <button type="submit">Post</button>
+          <textarea rows="1" cols="1" placeholder="Add a comment..."></textarea>
+          <div className="gram__footerFormPost">
+            <button type="submit">Post</button>
+          </div>
         </form>
       </div>
     </div>

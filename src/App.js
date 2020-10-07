@@ -1,17 +1,24 @@
 import React from "react";
-import Header from "./Header";
-import Gram from "./Gram";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./Home";
+import Messages from "./Messages";
 import ReportUser from "./ReportUser";
 import "./App.css";
 
 function app() {
   return (
-    <div className="app">
-      <Header />
-      <Gram />
-      <Gram />
-      <Gram />
-    </div>
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route path="/messages">
+            <Messages />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
