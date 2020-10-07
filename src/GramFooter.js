@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import "./GramFooter.css";
-import TextField from "@material-ui/core/TextField";
-import PostAddIcon from "@material-ui/icons/PostAdd";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import {
-  Input,
-  makeStyles,
-  InputAdornment,
-  InputLabel,
-  FormControl,
-  Button,
-} from "@material-ui/core";
+import { makeStyles, styled } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   iconPadding: {
@@ -24,28 +16,34 @@ const useStyles = makeStyles((theme) => ({
   },
 
   favoriteIcon: {
+    color: "black",
+  },
+  favoriteIconChange: {
     color: "red",
   },
 }));
 
 function GramFooter() {
+  const classes = useStyles();
   const [count, setCount] = useState(0);
-  const [likeIconColor, setLikeIconColor] = useState({});
+  const [likeIconColor, setLikeIconColor] = useState("black");
 
   function handleLikeClick() {
-    setCount(count + 1);
+    if (count === 0) {
+      setCount(count + 1);
+    } else {
+      setCount(count - 1);
+    }
   }
 
-  const handleLikeIconColor = () => {
-    setLikeIconColor("");
-  };
-
-  const classes = useStyles();
   return (
     <div className="gram__footer">
       <div className="gram__footerIcons">
         <button onClick={handleLikeClick}>
-          <FavoriteBorderIcon className={classes.favoriteIcon} />
+          <FavoriteBorderIcon
+            onClick={handleLikeClick}
+            className={classes.favoriteIcon}
+          />
         </button>
         <ChatBubbleOutlineIcon className={classes.iconPadding} />
       </div>
