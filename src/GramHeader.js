@@ -24,6 +24,12 @@ const useStyles = makeStyles((theme) => ({
     width: "400px",
     textAlign: "center",
   },
+
+  dialogMenuWarning: {
+    color: "red",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 }));
 
 class myClass extends ScrollListenerMixin {
@@ -66,10 +72,10 @@ function GramHeader(props) {
 
           <Dialog onClose={handleClose} open={open}>
             <List className={classes.dialogMenu}>
-              <ListItem className={classes.dialogMenu} button divider>
+              <ListItem className={classes.dialogMenuWarning} button divider>
                 <ListItemText primary="Report" />
               </ListItem>
-              <ListItem className={classes.dialogMenu} button divider>
+              <ListItem className={classes.dialogMenuWarning} button divider>
                 <ListItemText primary="Unfollow" />
               </ListItem>
 

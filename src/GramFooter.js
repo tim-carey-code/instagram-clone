@@ -3,7 +3,7 @@ import "./GramFooter.css";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import { makeStyles, styled } from "@material-ui/core";
+import { makeStyles, styled, Switch } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   iconPadding: {
@@ -15,9 +15,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
 
-  favoriteIcon: {
-    color: "black",
-  },
   favoriteIconChange: {
     color: "red",
   },
@@ -26,12 +23,14 @@ const useStyles = makeStyles((theme) => ({
 function GramFooter() {
   const classes = useStyles();
   const [count, setCount] = useState(0);
-  const [likeIconColor, setLikeIconColor] = useState("black");
+  const [likeClicked, setLikedClick] = useState(false);
 
-  function handleLikeClick() {
+  function handleLikeCount() {
     if (count === 0) {
+      setLikedClick(true);
       setCount(count + 1);
     } else {
+      setLikedClick(false);
       setCount(count - 1);
     }
   }
@@ -39,11 +38,12 @@ function GramFooter() {
   return (
     <div className="gram__footer">
       <div className="gram__footerIcons">
-        <button onClick={handleLikeClick}>
-          <FavoriteBorderIcon
-            onClick={handleLikeClick}
-            className={classes.favoriteIcon}
-          />
+        <button onClick={handleLikeCount}>
+          {likeClicked ? (
+            <FavoriteIcon className={classes.favoriteIconChange} />
+          ) : (
+            <FavoriteBorderIcon />
+          )}
         </button>
         <ChatBubbleOutlineIcon className={classes.iconPadding} />
       </div>
