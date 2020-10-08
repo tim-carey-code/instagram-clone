@@ -5,6 +5,7 @@ import Messages from "./Messages";
 import Login from "./Login";
 import ReportUser from "./ReportUser";
 import "./App.css";
+import Header from "./Header";
 
 function app() {
   return (
@@ -12,12 +13,16 @@ function app() {
       <div className="app">
         <Switch>
           <Route path="/login">
+            \
+            <Header />
             <Login />
           </Route>
           <Route path="/messages">
+            <Header />
             <Messages />
           </Route>
           <Route path="/">
+            <Header />
             <Home />
           </Route>
         </Switch>

@@ -8,8 +8,9 @@ import MessageOutlinedIcon from "@material-ui/icons/MessageOutlined";
 import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Avatar from "@material-ui/core/Avatar";
+import firebase from "./firebase";
 import "./Header.css";
-import { ClickAwayListener, IconButton } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Header() {
+  const user = firebase.auth().currentUser;
+  let name, email, photoUrl, uid, emailVerified;
   const classes = useStyles();
   const [navIconClicked, setNavIconClicked] = useState(false);
 
@@ -49,39 +52,34 @@ function Header() {
             <input type="text" placeholder="Search" />
           </form>
         </div>
-        <ClickAwayListener onClickAway={handleNavClickAway}>
-          <div className="header__icons">
-            <Link to="/">
-              <IconButton size={"small"}>
-                <HomeOutlinedIcon className={classes.headerIcons} />
-              </IconButton>
-            </Link>
-
-            <Link to="/messages">
-              <IconButton size={"small"}>
-                <MessageOutlinedIcon className={classes.headerIcons} />
-              </IconButton>
-            </Link>
-
-            <IconButton onClick={handleNavIconClick} size={"small"}>
-              <ExploreOutlinedIcon className={classes.headerIcons} />
+        <div className="header__icons">
+          <Link to="/">
+            <IconButton size={"small"}>
+              <HomeOutlinedIcon className={classes.headerIcons} />
             </IconButton>
-            <IconButton onClick={handleNavIconClick} size={"small"}>
-              <FavoriteBorderIcon className={classes.headerIcons} />
-            </IconButton>
+          </Link>
 
-            <div className="header__avatar">
-              <IconButton size={"small"}>
-                <Link to="/login">
-                  <Avatar
-                    className={classes.small}
-                    src="https://scontent-lga3-1.cdninstagram.com/v/t51.2885-19/s150x150/70977448_462064461068931_1725536328445067264_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_ohc=y3PDEIbz1gEAX-_EZgA&oh=5781b169cb18ef20ea8f11ca3101d61c&oe=5FA4E739"
-                  />
-                </Link>
-              </IconButton>
-            </div>
+          <Link to="/messages">
+            <IconButton size={"small"}>
+              <MessageOutlinedIcon className={classes.headerIcons} />
+            </IconButton>
+          </Link>
+
+          <IconButton onClick={handleNavIconClick} size={"small"}>
+            <ExploreOutlinedIcon className={classes.headerIcons} />
+          </IconButton>
+          <IconButton onClick={handleNavIconClick} size={"small"}>
+            <FavoriteBorderIcon className={classes.headerIcons} />
+          </IconButton>
+
+          <div className="header__avatar">
+            <IconButton size={"small"}>
+              <Link to="/login">
+                <Avatar className={classes.small} src={user?.photoURL} />
+              </Link>
+            </IconButton>
           </div>
-        </ClickAwayListener>
+        </div>
       </header>
     </div>
   );
