@@ -72,10 +72,12 @@ function Header() {
 
             <div className="header__avatar">
               <IconButton size={"small"}>
-                <Avatar
-                  className={classes.small}
-                  src="https://scontent-lga3-1.cdninstagram.com/v/t51.2885-19/s150x150/70977448_462064461068931_1725536328445067264_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_ohc=y3PDEIbz1gEAX-_EZgA&oh=5781b169cb18ef20ea8f11ca3101d61c&oe=5FA4E739"
-                />
+                <Link to="/login">
+                  <Avatar
+                    className={classes.small}
+                    src="https://scontent-lga3-1.cdninstagram.com/v/t51.2885-19/s150x150/70977448_462064461068931_1725536328445067264_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_ohc=y3PDEIbz1gEAX-_EZgA&oh=5781b169cb18ef20ea8f11ca3101d61c&oe=5FA4E739"
+                  />
+                </Link>
               </IconButton>
             </div>
           </div>
