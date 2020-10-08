@@ -58,7 +58,7 @@ function GramHeader(props) {
         <div className="gram__avatar">
           <Avatar
             // className={classes.small}
-            src="https://scontent-lga3-1.cdninstagram.com/v/t51.2885-19/s150x150/70977448_462064461068931_1725536328445067264_n.jpg?_nc_ht=scontent-lga3-1.cdninstagram.com&_nc_ohc=y3PDEIbz1gEAX-_EZgA&oh=5781b169cb18ef20ea8f11ca3101d61c&oe=5FA4E739"
+            src={user?.photoURL}
           />
         </div>
 
@@ -69,7 +69,7 @@ function GramHeader(props) {
           <Dialog onClose={handleClose} open={open}>
             <List className={classes.dialogMenu}>
               <ListItem className={classes.dialogMenuWarning} button divider>
-                <ListItemText primary="Report" />
+                <ListItemText primary={"Report " + user?.displayName} />
               </ListItem>
               <ListItem className={classes.dialogMenuWarning} button divider>
                 <ListItemText primary="Unfollow" />

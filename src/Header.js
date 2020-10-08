@@ -24,20 +24,11 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
 }));
+const user = firebase.auth().currentUser;
 
 function Header() {
-  const user = firebase.auth().currentUser;
-  let name, email, photoUrl, uid, emailVerified;
   const classes = useStyles();
-  const [navIconClicked, setNavIconClicked] = useState(false);
 
-  function handleNavIconClick() {
-    setNavIconClicked(true);
-  }
-
-  const handleNavClickAway = () => {
-    setNavIconClicked(false);
-  };
   return (
     <div>
       <header className="header">
@@ -65,10 +56,10 @@ function Header() {
             </IconButton>
           </Link>
 
-          <IconButton onClick={handleNavIconClick} size={"small"}>
+          <IconButton size={"small"}>
             <ExploreOutlinedIcon className={classes.headerIcons} />
           </IconButton>
-          <IconButton onClick={handleNavIconClick} size={"small"}>
+          <IconButton size={"small"}>
             <FavoriteBorderIcon className={classes.headerIcons} />
           </IconButton>
 

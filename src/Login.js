@@ -2,17 +2,6 @@ import React, { useEffect } from "react";
 import firebase from "./firebase";
 
 function Login() {
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        console.log("user is signed in");
-        console.log(user);
-      } else {
-        console.log("user is signed out");
-      }
-    });
-    return () => {};
-  }, []);
   const onSubmit = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase

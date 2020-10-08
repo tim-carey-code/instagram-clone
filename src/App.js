@@ -3,11 +3,28 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import Messages from "./Messages";
 import Login from "./Login";
+import firebase from "./firebase";
 import ReportUser from "./ReportUser";
 import "./App.css";
+import { useStateValue } from "./StateProvider";
 import Header from "./Header";
+const user = firebase.auth().currentUser;
+let name,
+  email,
+  photoUrl,
+  uid,
+  emailVerified = useStateValue();
 
 function app() {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      console.log("user is signed in");
+      console.log(user);
+    } else {
+      console.log("user is signed out");
+    }
+  });
+
   return (
     <Router>
       <div className="app">
