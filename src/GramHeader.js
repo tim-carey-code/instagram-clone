@@ -3,6 +3,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { BrowserRouter as Link } from "react-router-dom";
 import { ScrollListenerMixin } from "react-scroll-listener";
 import "./GramHeader.css";
+import firebase from "./firebase";
 import {
   Avatar,
   List,
@@ -39,6 +40,8 @@ class myClass extends ScrollListenerMixin {
 }
 
 function GramHeader(props) {
+  const user = firebase.auth().currentUser;
+  let name, email, photoUrl, uid, emailVerified;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const classes = useStyles();

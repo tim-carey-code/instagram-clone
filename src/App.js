@@ -8,14 +8,10 @@ import ReportUser from "./ReportUser";
 import "./App.css";
 import { useStateValue } from "./StateProvider";
 import Header from "./Header";
-const user = firebase.auth().currentUser;
-let name,
-  email,
-  photoUrl,
-  uid,
-  emailVerified = useStateValue();
 
 function app() {
+  const user = firebase.auth().currentUser;
+  let name, email, photoUrl, uid, emailVerified;
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
       console.log("user is signed in");

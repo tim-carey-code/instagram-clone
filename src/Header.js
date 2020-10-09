@@ -24,10 +24,11 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
 }));
-const user = firebase.auth().currentUser;
 
 function Header() {
   const classes = useStyles();
+  const user = firebase.auth().currentUser;
+  let name, email, photoUrl, uid, emailVerified;
 
   return (
     <div>
