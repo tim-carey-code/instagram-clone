@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
@@ -8,7 +8,7 @@ import MessageOutlinedIcon from "@material-ui/icons/MessageOutlined";
 import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import Avatar from "@material-ui/core/Avatar";
-import firebase from "./firebase";
+import { useAuth } from "./firebase";
 import "./Header.css";
 import { IconButton } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
 
 function Header() {
   const classes = useStyles();
-  const user = firebase.auth().currentUser;
-  let name, email, photoUrl, uid, emailVerified;
+
+  const user = useAuth();
 
   return (
     <div>

@@ -1,0 +1,5 @@
+.login__buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 325px;
+}

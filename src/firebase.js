@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import React, { useState, useEffect } from "react";
 
 const firebaseConfig = {
   apiKey: "AIzaSyACeI8YJvJv3h0k4hXVAFKgFh5RNp6Hc-I",
@@ -13,7 +14,24 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
+const storage = firebase.storage();
+const provider = new firebase.auth.GoogleAuthProvider();
 
-export { db, auth };
+const useAuth = () => {
+  const fireUser = auth.currentUser;
+  const [user, setUser] = useState(fireUser);
+
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((user) => {
+      user ? setUser(user) : setUser(null);
+    });
+    return () => {
+      unsub();
+    };
+  });
+  return user;
+};
+
+export { db, auth, storage, provider, useAuth };
 
 export default firebase;

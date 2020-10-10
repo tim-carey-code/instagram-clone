@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
-import firebase from "./firebase";
+import { provider, auth } from "./firebase";
+import "./Login.css";
+import { useStateValue } from "./StateProvider";
 
 function Login() {
   const onSubmit = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase
-      .auth()
+    auth
       .signInWithRedirect(provider)
       .then(function (result) {
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+
         // ...
       })
       .catch(function (error) {
@@ -28,8 +29,7 @@ function Login() {
   };
 
   const onSignout = () => {
-    firebase
-      .auth()
+    auth
       .signOut()
       .then(function () {
         // Sign-out successful.
@@ -40,7 +40,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="login__buttons">
       <button onClick={onSubmit}>Login</button>
       <button onClick={onSignout}>Sign Out</button>
     </div>
